@@ -14,6 +14,9 @@
 #    taille = 10
 
 #------------------------------------------------------------------------
+
+import re
+
 fichier = open("Spectre_photoluminescence.txt")
 taille = 10
 
@@ -28,12 +31,14 @@ longueurs_onde = []
 intensites = []
 
 for lignecourant in fichier:
-    if lignecourant.strip() == "# >>>>>Begin Spectral Data<<<<<":
+    res = re.search("Begin", lignecourant)
+    if res :
         lignecherche = True
         continue
         
     if lignecherche == True :
-        if lignecourant.strip() == ">>>>>End Spectral Data<<<<<":
+        res = re.search("End", lignecourant)
+        if res:
             break
         else :
             #ligne courant correspond à une ligne de données
@@ -86,3 +91,9 @@ print(data)
 
 fichier.close()
     
+
+    
+    
+    
+    
+   
