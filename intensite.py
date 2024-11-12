@@ -90,7 +90,26 @@ def intensite():
     
     fichier.close()
     
+    #Print max, min, moyenne pour chaque fenêtre
+    for k in data:
+        cle = k
+        liste_intensites = data[k]
+        print("----------------------------\nFenêtre : ", cle)
+        print("Nombre de mesures : ", len(liste_intensites))
+        print("Maximum : ", max(liste_intensites))
+        print("Minimum : ", min(liste_intensites))
+        
+        if len(liste_intensites) == 0:
+            moy = 0
+        else:
+            moy = sum(liste_intensites)/len(liste_intensites)
+        print("Moyenne : ", moy)
+    
+    
+    
     return data
+
+intensite()
 
 
 
