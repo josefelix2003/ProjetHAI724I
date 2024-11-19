@@ -6,5 +6,8 @@ Cet script permet d'indexer les intensités mesurées par intervalle de longeur 
 
 Fonctionnement général
 
-Ce script est constitué de trois fichier. Le fichier main.sh est le fichier principal est c'est le seul fichier à executer par l'usager. Ce fichier a comme but de récuperer le nom du fichier contenant le spectre d'intensité. Il donne la possibilité aussi de fournir une taille de fenêtre spécifique, sinon la taille sera 10 nm par défaut. Ensuite ce script appelle le script intensite.py. Ce script python permet de stocker les données sous forme d'un dictionnaire pour ensuite faire une analyse du spectre.  
+Ce script est constitué de trois fichiers. Le fichier main.sh est le fichier principal est c'est le seul fichier à executer par l'usager. Ce fichier a comme but de récuperer le nom du fichier contenant le spectre d'intensité. Il donne la possibilité aussi de fournir une taille de fenêtre spécifique, sinon la taille sera 10 nm par défaut. Ensuite ce script appelle le script intensite.py. Ce script python permet de stocker les données sous forme d'un dictionnaire pour ensuite faire une analyse du spectre. Le troisième fichier recherche_plot.py permet d'étudier graphiquement une intervalle concrète qui sera spécifiée par l'utilisateur. 
+
+Spécifications
+Cet programme prend en entrée un fichier contenant les données du spectromètre. Un extract du fichier utilisé pour concevoir cet script est annexé comme exemple. De même un exemple de ce qui est renvoyé en sortie est annexé. 
 
