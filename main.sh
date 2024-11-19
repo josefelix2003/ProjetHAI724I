@@ -6,11 +6,11 @@ read taille
 
 
 #tester si le fichier existe
-if [ -z $1 ]
+if [ -z $fichier ]
 then
     echo "Aucun fichier specifié"
     exit 1
-elif [ -f $1 ]
+elif [ -f $fichier ]
 then
      echo "Le fichier existe"
 else
