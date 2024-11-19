@@ -1,4 +1,4 @@
-#Le parametre 1 correspond au nom du fichier, parametre 2 correspond a la taille 
+#L'usager peut saisir le nom du fichier et la taille souhaitée
 echo "Veuillez saisir le nom du fichier contenant le spectre"
 read fichier
 echo "Veuillez saisir la taille de la fenêtre"
@@ -18,7 +18,7 @@ else
     exit 1
 fi
 
-echo "Etape suivante"
+
 
 #importer le fichier avec le script python intensite.py
 
@@ -26,4 +26,3 @@ python3 intensite.py $fichier $taille
 
 
 
-#stocker la colonne i 
