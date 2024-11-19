@@ -1,6 +1,9 @@
 #Le parametre 1 correspond au nom du fichier, parametre 2 correspond a la taille 
-fichier=$1
-taille=$2
+echo "Veuillez saisir le nom du fichier contenant le spectre"
+read fichier
+echo "Veuillez saisir la taille de la fenêtre"
+read taille
+
 
 #tester si le fichier existe
 if [ -z $1 ]
