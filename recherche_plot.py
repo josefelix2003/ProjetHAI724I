@@ -1,5 +1,11 @@
 
 import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
+import intensite from intensite.py
+
+
+intensite=intensite(nomfichier, taille)[1]
+longueur_ondes=intensite(nomfichier, taille)[2]
+
 
 longueurs_ondesint=[] #initialisation de mon tableau de valeur d'intérêt pour lambda et I
 intensitesint=[]
