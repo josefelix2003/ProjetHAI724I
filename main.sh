@@ -6,18 +6,18 @@ read taille
 
 
 #tester la validité du fichier
-if [ -z "$fichier" ] # vérifier si une chaîne a été fourni
-then
-    echo "Aucun fichier specifié"
-    exit 1
-elif [ -f "$fichier" ]#tester si le fichier existe dans le dossier courant et que c'est bien un fichier
-then
-     echo "Le fichier existe"
-     echo $fichier
-else
-    echo "Le fichier specifié n'existe pas ou n'est pas un fichier"
-    exit 1
-fi
+#if [ -z "$fichier" ] # vérifier si une chaîne a été fourni
+#then
+ #   echo "Aucun fichier specifié"
+  #  exit 1
+#elif [ -f "$fichier" ]#tester si le fichier existe dans le dossier courant et que c'est bien un fichier
+#then
+  #   echo "Le fichier existe"
+   #  echo $fichier
+#else
+ #   echo "Le fichier specifié n'existe pas ou n'est pas un fichier"
+  #  exit 1
+#fi
 
 #tester la validité de la fenêtre
 
