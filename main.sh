@@ -21,19 +21,19 @@ fi
 
 #tester la validité de la fenêtre
 
-if [ -z "$taille" ]
-then
-    echo "Aucune valeur a été saisie; La valeur par défaut sera 10 nm"
-    taille=10
-    echo $taille
-elif [[ $taille =~ ^[0-9]+$ ]]
-then 
-    echo "La taille saisie est bien un entier positif : " 
-    echo $taille
-else
-    echo "La taille saisie n'est pas valide"
-    exit 1
-fi
+#if [ -z "$taille" ]
+#then
+ #   echo "Aucune valeur a été saisie; La valeur par défaut sera 10 nm"
+  #  taille=10
+   # echo $taille
+#elif [[ $taille =~ ^[0-9]+$ ]]
+#then 
+ #   echo "La taille saisie est bien un entier positif : " 
+  #  echo $taille
+#else
+ #   echo "La taille saisie n'est pas valide"
+  #  exit 1
+#fi
 
 
 
