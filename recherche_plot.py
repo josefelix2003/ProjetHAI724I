@@ -4,7 +4,7 @@ import intensite from intensite.py
 
 
 intensite=intensite(nomfichier, taille)[1]
-longueur_ondes=intensite(nomfichier, taille)[2]
+longueur_ondes=intensite(nomfichier, taille)[2] #voir siplifier un seul appel
 
 
 longueurs_ondesint=[] #initialisation de mon tableau de valeur d'intérêt pour lambda et I
@@ -17,12 +17,12 @@ float(intervallefin)=input('veuillez indiquer une fin d intervalle pour les long
 print ('voici les intensités correspondantes à cet intervalle et la représentation graphique')
 
 
-for i in range (0, len(longueurs_onde)) 
+for i in range (0, len(longueurs_onde)):
 
-if longueurs_onde[i] > intervalledebut
+  if (longueurs_onde[i] > intervalledebut):
 
-longueurs_ondesint.append(longueurs_onde[i])
-intensitesint.append(intensite[i])
+    longueurs_ondesint.append(longueurs_onde[i])
+    intensitesint.append(intensite[i])
 
 
 
