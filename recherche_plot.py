@@ -1,20 +1,14 @@
-Un deuxième script recherche_plot.py aura pour but de lister les intensités pour un intervalle de
-longueur d'onde donnée demandée par l'utilisateur (fonction input) en utilisant l'index et d'afficher
-graphiquement les intensités en fonction des longueurs d'onde pour l'intervalle demandé.
 
+import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
 
-
-import matplotlib.pyplot as plt
-
-longueurs_ondesint=[]
+longueurs_ondesint=[] #initialisation de mon tableau de valeur d'intérêt pour lambda et I
 intensitesint=[]
 
-prenom = input('Entrez votre prénom (entre guillemets) : ')
 
-float(intervalledebut)=input('veuillez indiquer un début d'intervalle pour les longueurs d'onde pour lesquelles vous souhaitez avoir les intensités correspondantes') 
-float(intervallefin)=input('veuillez indiquer une fin d'intervalle pour les longueurs d'ondes pour lesquelles vous souhaitez avoir les intensités correspondantes')
+float(intervalledebut)=input('veuillez indiquer un début d intervalle pour les longueurs d onde pour lesquelles vous souhaitez avoir les intensités correspondantes') #fonction input pour que l'utilisateur définisse les brones de l'intervalle
+float(intervallefin)=input('veuillez indiquer une fin d intervalle pour les longueurs d ondes pour lesquelles vous souhaitez avoir les intensités correspondantes')
 
-print 'voici les intensités correspondantes à cet intervalle' 
+print 'voici les intensités correspondantes à cet intervalle et la représentation graphique' 
 
 
 for i in range 0 : len(longueurs_onde) 
@@ -24,8 +18,8 @@ if longueurs_onde[i] > intervalledebut
 longueurs_ondesint.append(longueurs_onde[i])
 intensitesint.append(intensite[i])
 
-and if longueurs_ondes < intervallefin
 
 
-plt.plot(longueurs_ondesint, intensitesint)
-plt.show() 
+
+plt.plot(longueurs_ondesint, intensitesint) #crée le plot, mais ne l'affiche pas
+plt.show() #affiche le plot
