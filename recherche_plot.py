@@ -3,6 +3,12 @@ longueur d'onde donnée demandée par l'utilisateur (fonction input) en utilisan
 graphiquement les intensités en fonction des longueurs d'onde pour l'intervalle demandé.
 
 
+
+import matplotlib.pyplot as plt
+
+longueurs_ondesint=[]
+intensitesint=[]
+
 prenom = input('Entrez votre prénom (entre guillemets) : ')
 
 float(intervalledebut)=input('veuillez indiquer un début d'intervalle pour les longueurs d'onde pour lesquelles vous souhaitez avoir les intensités correspondantes') 
@@ -11,9 +17,15 @@ float(intervallefin)=input('veuillez indiquer une fin d'intervalle pour les long
 print 'voici les intensités correspondantes à cet intervalle' 
 
 
+for i in range 0 : len(longueurs_onde) 
 
-if longueurs_onde > intervalledebut
+if longueurs_onde[i] > intervalledebut
+
+longueurs_ondesint.append(longueurs_onde[i])
+intensitesint.append(intensite[i])
+
 and if longueurs_ondes < intervallefin
 
-intensite
 
+plt.plot(longueurs_ondesint, intensitesint)
+plt.show() 
