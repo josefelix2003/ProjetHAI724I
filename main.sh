@@ -6,11 +6,11 @@ read taille
 
 
 #tester la validité du fichier
-if [ -z $fichier ] # vérifier si une chaîne a été fourni
+if [ -z "$fichier" ] # vérifier si une chaîne a été fourni
 then
     echo "Aucun fichier specifié"
     exit 1
-elif [ -f $fichier ]#tester si le fichier existe dans le dossier courant et que c'est bien un fichier
+elif [ -f "$fichier" ]#tester si le fichier existe dans le dossier courant et que c'est bien un fichier
 then
      echo "Le fichier existe"
      echo $fichier
@@ -21,12 +21,12 @@ fi
 
 #tester la validité de la fenêtre
 
-if [ -z $taille ]
+if [ -z "$taille" ]
 then
     echo "Aucune valeur a été saisie; La valeur par défaut sera 10 nm"
     taille=10
     echo $taille
-elif [ $taille =~ ^[0-9]+$ ]
+elif [[ $taille =~ ^[0-9]+$ ]]
 then 
     echo "La taille saisie est bien un entier positif : " 
     echo $taille
