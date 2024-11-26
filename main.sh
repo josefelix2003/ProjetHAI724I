@@ -19,7 +19,7 @@ else
     exit 1
 fi
 
-#tester la validité de la fênetre
+#tester la validité de la fenêtre
 
 if [ -z $taille ]
 then
