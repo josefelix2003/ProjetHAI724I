@@ -39,7 +39,7 @@ fi
 
 #importer le fichier avec le script python intensite.py
 
-python3 intensite.py $fichier $taille
+#python3 intensite.py $fichier $taille
 
 
 
