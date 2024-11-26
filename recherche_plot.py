@@ -11,7 +11,7 @@ float(intervallefin)=input('veuillez indiquer une fin d intervalle pour les long
 print 'voici les intensités correspondantes à cet intervalle et la représentation graphique' 
 
 
-for i in range 0 : len(longueurs_onde) 
+for i in range (0, len(longueurs_onde)) 
 
 if longueurs_onde[i] > intervalledebut
 
