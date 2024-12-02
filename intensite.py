@@ -18,7 +18,7 @@
 import re
 def intensite():
     fichier = open("Spectre_photoluminescence.txt")
-    taille = 10
+#    taille = 10  ; # il me semble qu'on a déjà définit taille dans le main
     
     
     lignecherche = False
