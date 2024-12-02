@@ -17,9 +17,10 @@ float(intervallefin)=input('veuillez indiquer une fin d intervalle pour les long
 print ('voici les intensités correspondantes à cet intervalle et la représentation graphique')
 
 
+
 for i in range (0, len(longueurs_onde)):
 
-  if (longueurs_onde[i] > intervalledebut):
+  if (longueurs_onde[i] > intervalledebut) and (longueurs_onde[i] < intervallefin):
 
     longueurs_ondesint.append(longueurs_onde[i])
     intensitesint.append(intensite[i])
