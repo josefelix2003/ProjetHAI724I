@@ -25,7 +25,7 @@ for i in range (0, len(longueurs_onde)):
     longueurs_ondesint.append(longueurs_onde[i])
     intensitesint.append(intensite[i])
 
-
+print intensitesint; 
 
 
 plt.plot(longueurs_ondesint, intensitesint) #crée le plot, mais ne l'affiche pas
