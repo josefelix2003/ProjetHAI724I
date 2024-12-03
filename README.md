@@ -1,3 +1,24 @@
+# TP spectre de photoluminescence
+Programme d’aide à l’exploitation des spectres de photoluminescence
+
+#auteurs
+Jose-Miguel Felix-De-Los-Rios et Alban Desoutter
+
+#Description
+L’utilisateur doit fournir un fichier .txt contenant les data du spectre de photoluminescence. 
+Le programme demandera des valeurs de longueurs d’onde min et max et plotera les intensités dans cet intervalle. 
+
+#version Python
+Python 3.12.7
+
+#Licence
+Ce fichier est sous licence Python Software Foundation License
+
+![image](https://github.com/user-attachments/assets/3336af74-ee52-426e-b919-d077c5f54c53)
+
+
+
+
 Spectre de photoluminescence
 
 Contexte
