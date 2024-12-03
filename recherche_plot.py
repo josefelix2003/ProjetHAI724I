@@ -1,10 +1,13 @@
+import sys
+nom_fichier = sys.argv[1]
+taille = sys.argv[2]
 
 import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
 from intensite import intensite
 
 
-intensite=intensite(nomfichier, taille)[1]
-longueurs_ondes=intensite(nomfichier, taille)[2] #voir siplifier un seul appel
+intensite=intensite(nom_fichier, taille)[1]
+longueurs_ondes=intensite(nom_fichier, taille)[2] #voir siplifier un seul appel
 
 
 longueurs_ondesint=[] #initialisation de mon tableau de valeur d'intérêt pour lambda et I
