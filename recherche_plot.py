@@ -33,7 +33,7 @@ print (intensitesint)
 
 
 plt.plot(longueurs_ondesint, intensitesint) #crée le plot, mais ne l'affiche pas
-plt.xlabel('Longueurs d'onde')
-plt.ylabel('Intensite (a.u.)')
-plt.title('Spectre photoluminescence')
+plt.xlabel("Longueurs d'onde")
+plt.ylabel("Intensite (a.u.)")
+plt.title("Spectre photoluminescence")
 plt.show() #affiche le plot
