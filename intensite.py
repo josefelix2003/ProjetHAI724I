@@ -40,7 +40,7 @@ def intensite(nom_fichier, taille):
     longueur_min = int(min(longueurs_onde))
     derniere_longueur = int(max(longueurs_onde))
     
-        
+        #on crée les clés pour le dictionnaire
     while longueur_min < derniere_longueur: #Tant qu'on n'est pas arrivé a la derniere longueur en crée une fenetre
         fenetres.append((longueur_min,longueur_min+taille))
         longueur_min+=taille
@@ -64,16 +64,16 @@ def intensite(nom_fichier, taille):
                 valeurs_dict[n].append(intensite) #on ajoute cette intensité à la liste d'indice n 
             
     
-    data = {}
+    dictionnaire = {}
     for n in range(nb_fenetres): #on va parcourir les différentes fenetres
-        data[fenetres[n]]=valeurs_dict[n] #fenetres[n] correspond a la clé du dictionnaire; valeurs_dict[n] définit la valeurs associée a chaque clé
+        dictionnaire[fenetres[n]]=valeurs_dict[n] #fenetres[n] correspond a la clé du dictionnaire; valeurs_dict[n] définit la valeurs associée a chaque clé
     
     #fichier.close()
     
     #Print max, min, moyenne pour chaque fenêtre
-    for k in data:
+    for k in dictionnaire:
         cle = k
-        liste_intensites = data[k]
+        liste_intensites = dictionnaire[k]
         print("----------------------------\nFenêtre : ", cle)
         print("Nombre de mesures : ", len(liste_intensites))
         print("Maximum : ", max(liste_intensites))
@@ -87,7 +87,7 @@ def intensite(nom_fichier, taille):
     
     
     
-    return data, intensites, longueurs_onde
+    return dictionnaire, intensites, longueurs_onde
 
 print(intensite(nom_fichier, taille)[0])
 
