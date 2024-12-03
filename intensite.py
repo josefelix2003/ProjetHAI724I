@@ -1,10 +1,5 @@
 
 import re
-import sys
-    
-#stocker paramètres d'entrée    
-nom_fichier = sys.argv[1] #nom du fichier contenant les données
-taille =  int(sys.argv[2]) # taille de chaque fenetre
 
 
 def intensite(nom_fichier, taille):
@@ -88,8 +83,6 @@ def intensite(nom_fichier, taille):
     
     
     return dictionnaire, intensites, longueurs_onde
-
-print(intensite(nom_fichier, taille)[0])
 
 
 
