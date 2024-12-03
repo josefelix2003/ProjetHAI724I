@@ -1,6 +1,6 @@
 
 import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
-import intensite from intensite.py
+from intensite import intensite
 
 
 intensite=intensite(nomfichier, taille)[1]
