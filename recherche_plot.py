@@ -1,9 +1,10 @@
 import sys
 nom_fichier = sys.argv[1]
-taille = sys.argv[2]
+taille = int(sys.argv[2])
 
 import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
 from intensite import intensite
+print(intensite(nom_fichier, taille)[0])
 
 
 intensite=intensite(nom_fichier, taille)[1]
