@@ -11,8 +11,8 @@ longueurs_ondesint=[] #initialisation de mon tableau de valeur d'intérêt pour 
 intensitesint=[]
 
 
-float(intervalledebut)=float(input('veuillez indiquer un début d intervalle pour les longueurs d onde pour lesquelles vous souhaitez avoir les intensités correspondantes')) #fonction input pour que l'utilisateur définisse les brones de l'intervalle
-float(intervallefin)=float(input('veuillez indiquer une fin d intervalle pour les longueurs d ondes pour lesquelles vous souhaitez avoir les intensités correspondantes'))
+intervalledebut=float(input('veuillez indiquer un début d intervalle pour les longueurs d onde pour lesquelles vous souhaitez avoir les intensités correspondantes')) #fonction input pour que l'utilisateur définisse les brones de l'intervalle
+intervallefin=float(input('veuillez indiquer une fin d intervalle pour les longueurs d ondes pour lesquelles vous souhaitez avoir les intensités correspondantes'))
 
 print ('voici les intensités correspondantes à cet intervalle et la représentation graphique')
 
