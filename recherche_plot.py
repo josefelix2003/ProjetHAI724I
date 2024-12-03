@@ -7,7 +7,7 @@ from intensite import intensite
 print(intensite(nom_fichier, taille)[0])
 
 
-dictionnaire, intensite, longueurs_ondes =intensite(nom_fichier, taille)
+dictionnaire, intensite, longueurs_onde =intensite(nom_fichier, taille)
 
 
 longueurs_ondesint=[] #initialisation de mon tableau de valeur d'intérêt pour lambda et I
