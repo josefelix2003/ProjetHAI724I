@@ -4,10 +4,11 @@ taille = int(sys.argv[2])
 
 import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
 from intensite import intensite
-print(intensite(nom_fichier, taille)[0])
+
 
 
 dictionnaire, intensite, longueurs_onde =intensite(nom_fichier, taille)
+print(dictionnaire)
 
 
 longueurs_ondesint=[] #initialisation de mon tableau de valeur d'intérêt pour lambda et I
