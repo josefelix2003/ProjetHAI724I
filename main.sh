@@ -40,7 +40,7 @@ echo "------------------ Etape Suivante ---------------------"
 
 #importer le fichier avec le script python intensite.py
 
-python3 intensite.py $fichier $taille
+python3 recherche_plot.py $fichier $taille
 
 
 
