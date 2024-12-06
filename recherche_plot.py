@@ -58,7 +58,7 @@ while continuer:
   plotSpectre()
   reponse_valide = False
   while (reponse_valide == False):
-    reponse_clavier = input("Veuillez vous retracer le spectre pour un nouvel intervalle [Y/N]?\n")
+    reponse_clavier = input("Voulez vous retracer le spectre pour un nouvel intervalle [Y/N]?\n")
     if (reponse_clavier == "Y" or reponse_clavier == "N"):
       reponse_valide = True
       if reponse_clavier == "N":
