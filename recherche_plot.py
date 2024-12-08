@@ -21,7 +21,7 @@ def definitionIntervalle(): #On définit une fonction qui demande l'intervalle s
     if (intervalledebut >= longueur_min and intervallefin <= longueur_max and intervalledebut<=longueur_max and intervallefin >= longueur_min and intervalledebut < intervallefin):
       continuer = False
     else:
-      print("L'intervalle n'est pas valide")
+      print("L'intervalle doit etre compris entre {} et {}".format(longueur_min, longueur_max))
 
   return intervalledebut, intervallefin
   
