@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
 from intensite import intensite
 
 dictionnaire, intensite, longueurs_onde = intensite(nom_fichier, taille)
-print(dictionnaire)
+print("--------------- Indexation -----------------\n", dictionnaire)
 
-def definitionIntervalle():
+def definitionIntervalle(): #On définit une fonction qui demande l'intervalle souhaité à l'utilisateur
   continuer = True
   longueur_min = min(longueurs_onde)
   longueur_max = max(longueurs_onde)
@@ -17,6 +17,7 @@ def definitionIntervalle():
     intervalledebut = float(input("Veuillez indiquer un début d'intervalle pour les longueurs d'onde pour lesquelles vous souhaitez avoir le spectre\n")) #fonction input pour que l'utilisateur définisse les bornes de l'intervalle
     intervallefin = float(input("Veuillez indiquer une fin d'intervalle pour les longueurs d'onde pour lesquelles vous souhaitez avoir le spectre\n"))
 
+    #On vérifie que l'intervalle donné est valide
     if (intervalledebut >= longueur_min and intervallefin <= longueur_max and intervalledebut<=longueur_max and intervallefin >= longueur_min and intervalledebut < intervallefin):
       continuer = False
     else:
@@ -27,7 +28,7 @@ def definitionIntervalle():
   
 
 
-def plotSpectre():
+def plotSpectre(): # Une fonction qui trace 
 
   intervalledebut, intervallefin = definitionIntervalle()
 
