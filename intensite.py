@@ -1,6 +1,19 @@
 
 import re
 
+def question_YorN(question):
+        reponse_valide = False
+        while reponse_valide == False:
+            print(question)
+            reponse_clavier = input()
+            if reponse_clavier == "Y" or reponse_clavier == "N":
+                reponse_valide = True
+                if reponse_clavier == "Y":
+                    return "Y"
+                else :
+                    return "N"
+            else:
+                print("Veuillez répondre Y pour Oui ou N pour Non")
 
 def intensite(nom_fichier, taille):
     fichier = open(nom_fichier) #les données seront stockés dans cet variable
@@ -79,10 +92,28 @@ def intensite(nom_fichier, taille):
         else:
             moy = sum(liste_intensites)/len(liste_intensites)
         print("Moyenne : ", moy)
+        
+    
+
+    #Normalisation des intensités
+    intensites_normal = None
+
+    normalisation = question_YorN("Voulez vous tracer le spectre normalisé [Y/N]?")
+    if normalisation == "Y":
+        intensites_normal = []
+        intensite_max = max(intensites)
+        for i in intensites:
+            i_norm = i*(1/intensite_max)
+            intensites_normal.append(i_norm)
+
+    
+                
     
     
     
-    return dictionnaire, intensites, longueurs_onde
+    
+    
+    return dictionnaire, intensites, longueurs_onde, intensites_normal
 
 
 

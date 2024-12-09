@@ -3,9 +3,9 @@ nom_fichier = sys.argv[1]
 taille = int(sys.argv[2])
 
 import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
-from intensite import intensite
+from intensite import intensite, question_YorN
 
-dictionnaire, intensite, longueurs_onde = intensite(nom_fichier, taille)
+dictionnaire, intensite, longueurs_onde, intensites_normal  = intensite(nom_fichier, taille)
 print("--------------- Indexation -----------------\n", dictionnaire)
 
 def definitionIntervalle(): #On définit une fonction qui demande l'intervalle souhaité à l'utilisateur
@@ -24,29 +24,79 @@ def definitionIntervalle(): #On définit une fonction qui demande l'intervalle s
       print("L'intervalle doit etre compris entre {} et {}".format(longueur_min, longueur_max))
 
   return intervalledebut, intervallefin
+
   
   
 
+def recherche_pics():
 
+  longueurs_onde_pics = []
+  intensites_pics = []
+  critere_pic = demander_critere()
+  intensite_max = max(intensite)
+  
+  for i in range(1,len(intensite)-1):
+    if intensite[i] > intensite[i-1] and intensite[i] > intensite[i+1] and intensite[i]*(1/intensite_max) > critere_pic:
+      longueurs_onde_pics.append(longueurs_onde[i])
+      if intensites_normal is not None:
+        intensites_pics.append(intensites_normal[i])
+      else:
+        intensites_pics.append(intensite[i])
+
+  return longueurs_onde_pics, intensites_pics
+
+def demander_critere():
+
+  while True:
+    try:
+      print("Saisisez le critere pour détecter des pics (entre 0 et 1):")
+      critere = float(input())
+      if critere > 0 and critere <=1:
+        return critere
+      else:
+        print("Veuillez saisir un nombre entre 0 et 1")
+    except ValueError:
+      print ("Entrée invalide")
+      
+    
+    
 def plotSpectre(): # Une fonction qui trace 
 
   intervalledebut, intervallefin = definitionIntervalle()
 
-  print ("Voici les intensités correspondantes à cet intervalle et la représentation graphique")
-
   longueurs_ondeint = []
   intensitesint = []
+
+  longueurs_onde_picsint = []
+  intensites_picsint = []
 
   for i in range (0, len(longueurs_onde)):
 
     if (longueurs_onde[i] > intervalledebut) and (longueurs_onde[i] < intervallefin):
 
       longueurs_ondeint.append(longueurs_onde[i])
-      intensitesint.append(intensite[i])
 
+      if intensites_normal is not None:
+        intensitesint.append(intensites_normal[i])
+      else:
+        intensitesint.append(intensite[i])
+
+  longueurs_onde_pics, intensites_pics = recherche_pics()
+
+  for l in range(0,len(longueurs_onde_pics)):
+    longueur_pic = longueurs_onde_pics[l]
+    intensite_pic = intensites_pics[l]
+    if longueur_pic > intervalledebut and longueur_pic < intervallefin:
+      longueurs_onde_picsint.append(longueur_pic)
+      intensites_picsint.append(intensite_pic)
+      
+      
+  print ("Voici les intensités correspondantes à cet intervalle et la représentation graphique")
   print(intensitesint)
   plt.plot(longueurs_ondeint, intensitesint) #crée le plot, mais ne l'affiche pas
-  plt.xlabel("Longueurs d'onde")
+  plt.plot(longueurs_onde_picsint, intensites_picsint, label="Pics d'intensité", marker='x', linestyle = "", color='red')
+  plt.legend()
+  plt.xlabel("Longueurs d'onde (nm)")
   plt.ylabel("Intensite (a.u.)")
   plt.title("Spectre photoluminescence")
   plt.grid()
@@ -54,17 +104,11 @@ def plotSpectre(): # Une fonction qui trace
 
 
 #On execute la fonction au moins une fois, puis on demande si l'utilisateur veut retracer
-continuer = True;
-while continuer:
+continuer = "Y";
+while continuer == "Y":
   plotSpectre()
-  reponse_valide = False
-  while (reponse_valide == False):
-    reponse_clavier = input("Voulez vous retracer le spectre pour un nouvel intervalle [Y/N]?\n")
-    if (reponse_clavier == "Y" or reponse_clavier == "N"):
-      reponse_valide = True
-      if reponse_clavier == "N":
-        continuer = False
-    else:
-      print("Veuillez répondre Y pour continuer ou N pour arreter le programme")
+  continuer = question_YorN("Voulez vous retracer le spectre pour un nouvel interval [Y/N]?")
+  
+  
         
 
