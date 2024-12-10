@@ -5,6 +5,7 @@ taille = int(sys.argv[2])
 import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
 from intensite import intensite, question_YorN
 
+#import du dictionnaire, longueurs d'onde; intensités et intensités normalisés
 dictionnaire, intensite, longueurs_onde, intensites_normal  = intensite(nom_fichier, taille)
 
 
@@ -28,25 +29,24 @@ def definitionIntervalle(): #On définit une fonction qui demande l'intervalle s
   
   
 
-def recherche_pics():
-
+def recherche_pics(): #Fonction qui renvoie les valeurs correspondantes à des pics
+  #On crée les listes ne contenant que les longueurs d'ondes et intensités associées à des pics
   longueurs_onde_pics = []
   intensites_pics = []
   critere_pic = demander_critere()
   intensite_max = max(intensite)
   
   for i in range(1,len(intensite)-1):
-    if intensite[i] > (intensite[i-2]+0.05) and intensite[i] > 1*(intensite[i+2]+0.05) and intensite[i]*(1/intensite_max) > critere_pic:
+    if intensite[i] > intensite[i-1] and intensite[i] > intensite[i+1] and intensite[i]*(1/intensite_max) > critere_pic:
       longueurs_onde_pics.append(longueurs_onde[i])
-      if intensites_normal is not None:
-        intensites_pics.append(intensites_normal[i])
+      if intensites_normal is not None: #Si on a normalisé
+        intensites_pics.append(intensites_normal[i])#On ajoute les intensités normalisés
       else:
-        intensites_pics.append(intensite[i])
+        intensites_pics.append(intensite[i])#Sinon on ajoute les intensités absolues
 
   return longueurs_onde_pics, intensites_pics
 
-def demander_critere():
-
+def demander_critere(): #Fonction qui renvoie le critere demandé à l'utilisateur
   while True:
     try:
       print("Saisisez le critere pour détecter des pics (entre 0 et 1):")
@@ -62,8 +62,10 @@ def demander_critere():
     
 def plotSpectre(): # Une fonction qui trace 
 
+  #on définit l'intervalle qu'on veut tracer
   intervalledebut, intervallefin = definitionIntervalle()
 
+  #on créé les listes qui vont contenir les données qui sont comprises dans l'intervalle qu'on vient de définir
   longueurs_ondeint = []
   intensitesint = []
 

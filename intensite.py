@@ -1,6 +1,6 @@
 
 import re
-
+#fonction qui récupere Y ou N suite à une question 
 def question_YorN(question):
         reponse_valide = False
         while reponse_valide == False:
@@ -15,7 +15,9 @@ def question_YorN(question):
             else:
                 print("Veuillez répondre Y pour Oui ou N pour Non")
 
-def intensite(nom_fichier, taille):
+                
+def intensite(nom_fichier, taille): #fonction qui renvoie le dictionnaire, les longueurs d'onde et intensités
+        
     fichier = open(nom_fichier) #les données seront stockés dans cet variable
     #On extrait ces donées pour les stocker sous forme de listes
     
@@ -106,12 +108,7 @@ def intensite(nom_fichier, taille):
             i_norm = i*(1/intensite_max)
             intensites_normal.append(i_norm)
 
-    
-                
-    
-    
-    
-    
+        
     
     return dictionnaire, intensites, longueurs_onde, intensites_normal
 
