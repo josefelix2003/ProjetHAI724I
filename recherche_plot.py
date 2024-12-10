@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt #bibliotheque de fonctions pour les plots
 from intensite import intensite, question_YorN
 
 dictionnaire, intensite, longueurs_onde, intensites_normal  = intensite(nom_fichier, taille)
-print("--------------- Indexation -----------------\n", dictionnaire)
+
 
 def definitionIntervalle(): #On définit une fonction qui demande l'intervalle souhaité à l'utilisateur
   continuer = True
@@ -36,7 +36,7 @@ def recherche_pics():
   intensite_max = max(intensite)
   
   for i in range(1,len(intensite)-1):
-    if intensite[i] > intensite[i-1] and intensite[i] > intensite[i+1] and intensite[i]*(1/intensite_max) > critere_pic:
+    if intensite[i] > (intensite[i-2]+0.05) and intensite[i] > 1*(intensite[i+2]+0.05) and intensite[i]*(1/intensite_max) > critere_pic:
       longueurs_onde_pics.append(longueurs_onde[i])
       if intensites_normal is not None:
         intensites_pics.append(intensites_normal[i])
@@ -91,8 +91,7 @@ def plotSpectre(): # Une fonction qui trace
       intensites_picsint.append(intensite_pic)
       
       
-  print ("Voici les intensités correspondantes à cet intervalle et la représentation graphique")
-  print(intensitesint)
+  
   plt.plot(longueurs_ondeint, intensitesint) #crée le plot, mais ne l'affiche pas
   plt.plot(longueurs_onde_picsint, intensites_picsint, label="Pics d'intensité", marker='x', linestyle = "", color='red')
   plt.legend()
