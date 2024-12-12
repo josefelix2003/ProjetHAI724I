@@ -15,8 +15,10 @@ def definitionIntervalle(): #On définit une fonction qui demande l'intervalle s
   longueur_max = max(longueurs_onde)
   
   while continuer:
-    intervalledebut = float(input("Veuillez indiquer un début d'intervalle pour les longueurs d'onde pour lesquelles vous souhaitez avoir le spectre\n")) #fonction input pour que l'utilisateur définisse les bornes de l'intervalle
-    intervallefin = float(input("Veuillez indiquer une fin d'intervalle pour les longueurs d'onde pour lesquelles vous souhaitez avoir le spectre\n"))
+    print("Veuillez indiquer un debut d'intervalle entre {} et {}".format(longueur_min, longueur_max))
+    intervalledebut = float(input()) #fonction input pour que l'utilisateur définisse les bornes de l'intervalle
+    print("Veuillez indiquer une fin d'intervalle entre {} et {}".format(longueur_min, longueur_max))
+    intervallefin = float(input())
 
     #On vérifie que l'intervalle donné est valide
     if (intervalledebut >= longueur_min and intervallefin <= longueur_max and intervalledebut<=longueur_max and intervallefin >= longueur_min and intervalledebut < intervallefin):
@@ -36,8 +38,8 @@ def recherche_pics(): #Fonction qui renvoie les valeurs correspondantes à des p
   critere_pic = demander_critere()
   intensite_max = max(intensite)
   
-  for i in range(1,len(intensite)-1):
-    if intensite[i] > intensite[i-1] and intensite[i] > intensite[i+1] and intensite[i]*(1/intensite_max) > critere_pic:
+  for i in range(1,len(intensite)-4):
+    if intensite[i] > intensite[i-1] and intensite[i] > intensite[i-4] and intensite[i] > intensite[i+1] and intensite[i] > intensite[i+4] and intensite[i]*(1/intensite_max) > critere_pic:
       longueurs_onde_pics.append(longueurs_onde[i])
       if intensites_normal is not None: #Si on a normalisé
         intensites_pics.append(intensites_normal[i])#On ajoute les intensités normalisés
@@ -57,7 +59,32 @@ def demander_critere(): #Fonction qui renvoie le critere demandé à l'utilisate
         print("Veuillez saisir un nombre entre 0 et 1")
     except ValueError:
       print ("Entrée invalide")
+
+def sauvegarder(longueurs, intensites, longueurs_pics, intensites_pics):
+  try:
+    if question_YorN("Voulez vous enregistrer les données [Y/N]?") == "Y": #Si on veut sauvegarder les données
+      nom_fichier = input("Nom du fichier (avec extension .txt) :\n")
+      if not (nom_fichier.endswith(".txt")):
+        nom_fichier+=".txt"
+        print("L'extension .txt a été ajouté automatiquement")
+              
+      with open(nom_fichier, 'a') as fichier:
+        fichier.write("#La premiere colonne correspond aux longueurs d'onde et la deuxieme colonne correspond aux intensités.\n#Voici les mesures pour l'intervalle specifié\n>>>>>>>>>>>>>Debut<<<<<<<<<<<<<<\n")
       
+        for longueur, intensite in zip(longueurs, intensites):
+          fichier.write("{} {}\n".format(longueur, intensite))
+          
+        fichier.write(">>>>>>>>>>>>>Fin<<<<<<<<<<<<<<\n\n#Voici les informations des pics trouvés\n>>>>>>>>>>>>>Debut<<<<<<<<<<<<<<\n")
+    
+        for longueur_pic, intensite_pic in zip(longueurs_pics, intensites_pics):
+          fichier.write("{} {}\n".format(longueur_pic, intensite_pic))
+        fichier.write(">>>>>>>>>>>>>Fin<<<<<<<<<<<<<<\n")
+
+      print("Les données ont été ajoutées a {}".format(nom_fichier))
+      
+  except:
+    print("Une erreur est survenue lors de l'écriture du fichier")
+    
     
     
 def plotSpectre(): # Une fonction qui trace 
@@ -102,6 +129,8 @@ def plotSpectre(): # Une fonction qui trace
   plt.title("Spectre photoluminescence")
   plt.grid()
   plt.show() #affiche le plot
+
+  sauvegarder(longueurs_ondeint, intensitesint, longueurs_onde_picsint, intensites_picsint)
 
 
 #On execute la fonction au moins une fois, puis on demande si l'utilisateur veut retracer

@@ -42,10 +42,9 @@ def intensite(nom_fichier, taille): #fonction qui renvoie le dictionnaire, les l
                 
                 longueurs_onde.append(float(l[0])) #on ajoute l'élément d'indice 0 aux longueurs d'onde
                 intensites.append(float(l[1])) #on ajoute l'élément d'indice 1 aux intensités
+
                 
-                    
-     
-    
+    fichier.close()
     fenetres = [] #La liste contenant les intervalles de longueurs d'onde
     longueur_min = int(min(longueurs_onde))
     derniere_longueur = int(max(longueurs_onde))
@@ -78,25 +77,27 @@ def intensite(nom_fichier, taille): #fonction qui renvoie le dictionnaire, les l
     for n in range(nb_fenetres): #on va parcourir les différentes fenetres
         dictionnaire[fenetres[n]]=valeurs_dict[n] #fenetres[n] correspond a la clé du dictionnaire; valeurs_dict[n] définit la valeurs associée a chaque clé
     
-    #fichier.close()
     
-    #Print max, min, moyenne pour chaque fenêtre
-    for k in dictionnaire:
-        cle = k
-        liste_intensites = dictionnaire[k]
-        print("----------------------------\nFenêtre : ", cle)
-        print("Nombre de mesures : ", len(liste_intensites))
-        print("Maximum : ", max(liste_intensites))
-        print("Minimum : ", min(liste_intensites))
+    #Enregistrement max, min, moyenne pour chaque fenêtre
+    if question_YorN("Voulez vous sauvegarder les informations de chaque fenetre [Y/N]?") == "Y":
+            nom_fichier = input("Nom du fichier (avec extension .txt) :\n")
+            if not nom_fichier.endswith(".txt"):
+                    nom_fichier+=".txt"
+            with open(nom_fichier, 'a') as fichier:
+                for cle in dictionnaire:
+                        liste_intensites = dictionnaire[cle]
+                        fichier.write("----------------------------\nFenêtre : {}\n".format(cle))
+                        fichier.write("Nombre de mesures : {}\n".format(len(liste_intensites)))
+                        fichier.write("Maximum : {}\n".format(max(liste_intensites)))
+                        fichier.write("Minimum : {}\n".format(min(liste_intensites)))
+                        if len(liste_intensites) == 0:
+                                moy = 0
+                        else:
+                                moy = sum(liste_intensites)/len(liste_intensites)
+                        fichier.write("Moyenne : {}\n".format(moy))
+            print("Les données ont été ajoutées à {}".format(nom_fichier))
         
-        if len(liste_intensites) == 0:
-            moy = 0
-        else:
-            moy = sum(liste_intensites)/len(liste_intensites)
-        print("Moyenne : ", moy)
-        
-    
-
+                            
     #Normalisation des intensités
     intensites_normal = None
 
@@ -107,6 +108,7 @@ def intensite(nom_fichier, taille): #fonction qui renvoie le dictionnaire, les l
         for i in intensites:
             i_norm = i*(1/intensite_max)
             intensites_normal.append(i_norm)
+        
 
         
     
