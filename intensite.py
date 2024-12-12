@@ -80,11 +80,11 @@ def intensite(nom_fichier, taille): #fonction qui renvoie le dictionnaire, les l
     
     #Enregistrement max, min, moyenne pour chaque fenêtre
     if question_YorN("Voulez vous sauvegarder les informations de chaque fenetre [Y/N]?") == "Y":
-            nom_fichier = input("Nom du fichier (avec extension .txt) :\n")
-            if not nom_fichier.endswith(".txt"):
+            nom_fichier = input("Nom du fichier (avec extension .txt) :\n") #L'utilisateur saisie le nom du fichier
+            if not nom_fichier.endswith(".txt"): #Si le nom saisie ne fini pas par .txt on l'ajoute a la main
                     nom_fichier+=".txt"
             with open(nom_fichier, 'a') as fichier:
-                for cle in dictionnaire:
+                for cle in dictionnaire: #on parcourt toutes les fenetres et on calcule le nom de mesures, le min, le max, la moyenne
                         liste_intensites = dictionnaire[cle]
                         fichier.write("----------------------------\nFenêtre : {}\n".format(cle))
                         fichier.write("Nombre de mesures : {}\n".format(len(liste_intensites)))
@@ -102,10 +102,10 @@ def intensite(nom_fichier, taille): #fonction qui renvoie le dictionnaire, les l
     intensites_normal = None
 
     normalisation = question_YorN("Voulez vous tracer le spectre normalisé [Y/N]?")
-    if normalisation == "Y":
+    if normalisation == "Y": #Si on veut normaliser
         intensites_normal = []
-        intensite_max = max(intensites)
-        for i in intensites:
+        intensite_max = max(intensites) #On recupere l'intensite maximale 
+        for i in intensites:#Pour chaque intensite on divise par la valeur maximale 
             i_norm = i*(1/intensite_max)
             intensites_normal.append(i_norm)
         

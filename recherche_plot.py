@@ -11,8 +11,8 @@ dictionnaire, intensite, longueurs_onde, intensites_normal  = intensite(nom_fich
 
 def definitionIntervalle(): #On définit une fonction qui demande l'intervalle souhaité à l'utilisateur
   continuer = True
-  longueur_min = min(longueurs_onde)
-  longueur_max = max(longueurs_onde)
+  longueur_min = min(longueurs_onde) #la longueur la plus petite de nos mesures
+  longueur_max = max(longueurs_onde) #la lognueur la plus grande de nos mesures
   
   while continuer:
     print("Veuillez indiquer un debut d'intervalle entre {} et {}".format(longueur_min, longueur_max))
@@ -51,9 +51,9 @@ def recherche_pics(): #Fonction qui renvoie les valeurs correspondantes à des p
 def demander_critere(): #Fonction qui renvoie le critere demandé à l'utilisateur
   while True:
     try:
-      print("Saisisez le critere pour détecter des pics (entre 0 et 1):")
+      print("Saisisez le seuil qui marque la fin du bruit (entre 0 et 1):")
       critere = float(input())
-      if critere > 0 and critere <=1:
+      if critere > 0 and critere <=1: #Si el nombre est valide
         return critere
       else:
         print("Veuillez saisir un nombre entre 0 et 1")
@@ -64,7 +64,7 @@ def sauvegarder(longueurs, intensites, longueurs_pics, intensites_pics):
   try:
     if question_YorN("Voulez vous enregistrer les données [Y/N]?") == "Y": #Si on veut sauvegarder les données
       nom_fichier = input("Nom du fichier (avec extension .txt) :\n")
-      if not (nom_fichier.endswith(".txt")):
+      if not (nom_fichier.endswith(".txt")): #Si le nom ne finit pas par .txt
         nom_fichier+=".txt"
         print("L'extension .txt a été ajouté automatiquement")
               
@@ -96,22 +96,22 @@ def plotSpectre(): # Une fonction qui trace
   longueurs_ondeint = []
   intensitesint = []
 
+  #On crée les listes qui cont contenir les données correspondantes aux pics dans notre intervalle
   longueurs_onde_picsint = []
   intensites_picsint = []
 
-  for i in range (0, len(longueurs_onde)):
-
+  for i in range (0, len(longueurs_onde)): # On vérifie si les longueurs d'onde sont comprises dans l'intervalle
     if (longueurs_onde[i] > intervalledebut) and (longueurs_onde[i] < intervallefin):
 
       longueurs_ondeint.append(longueurs_onde[i])
 
-      if intensites_normal is not None:
-        intensitesint.append(intensites_normal[i])
-      else:
-        intensitesint.append(intensite[i])
+      if intensites_normal is not None: #Si on a normalisé 
+        intensitesint.append(intensites_normal[i])#On ajoute l'intensité normalisé
+      else:#Si on n'a pas normalisé
+        intensitesint.append(intensite[i])#On ajoute l'intensité absolue
 
   longueurs_onde_pics, intensites_pics = recherche_pics()
-
+  #Pareil pour le pics
   for l in range(0,len(longueurs_onde_pics)):
     longueur_pic = longueurs_onde_pics[l]
     intensite_pic = intensites_pics[l]
@@ -130,6 +130,7 @@ def plotSpectre(): # Une fonction qui trace
   plt.grid()
   plt.show() #affiche le plot
 
+  #Demander si l'utilisateur veut sauvegarder les données
   sauvegarder(longueurs_ondeint, intensitesint, longueurs_onde_picsint, intensites_picsint)
 
 
